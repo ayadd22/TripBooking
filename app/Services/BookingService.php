@@ -27,21 +27,7 @@ class BookingService implements BookingServiceInterface
     }
 
     
-    public function isSeatAvailable(Trip $trip, int $seatId): bool
-    {
-        $seat = Seat::find($seatId);
-
-      
-        if ($seat === null || $seat->bus_id !== $trip->bus_id) {
-            return false;
-        }
-
-        
-        return ! Booking::active()
-            ->where('trip_id', $trip->id)
-            ->where('seat_id', $seatId)
-            ->exists();
-    }
+  
 
 
     public function book(int $customerId, int $tripId, int $seatId): Booking
@@ -85,7 +71,7 @@ class BookingService implements BookingServiceInterface
     public function cancel(Booking $booking): Booking
     {
         if ($booking->status === BookingStatus::Cancelled) {
-            // Already cancelled — nothing to do.
+          
             return $booking;
         }
 

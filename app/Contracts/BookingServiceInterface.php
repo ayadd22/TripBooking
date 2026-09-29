@@ -12,7 +12,7 @@ interface BookingServiceInterface
     public function getAvailableSeatsCount(Trip $trip): int;
 
   
-    public function isSeatAvailable(Trip $trip, int $seatId): bool;
+  
 
    
     public function book(int $customerId, int $tripId, int $seatId): Booking;
